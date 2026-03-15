@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Dashboard - FitTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #f4f4f4;
+        }
+        
+        .navbar {
+            background: black;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            font-size: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links .logout-btn {
+            background: #dc3545;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome-card {
+            background: #dc3545;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .welcome-card h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .info-value {
+            flex: 1;
+            color: #333;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .btn-logout {
+            background: #dc3545;
+            margin-top: 20px;
+            display: block;
+        }
+        
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .info-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .info-label {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1><span style="color: #dc3545;">Fit</span>Time</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="welcome-card">
+            <h1>Welcome back, {{ user.name }}! 👋</h1>
+            <p>Great to see you again at FitTime Gym</p>
+        </div>
+        
+        <div class="info-card">
+            <h2 style="margin-bottom: 20px; color: #333;">Your Information</h2>
+            
+            <div class="info-row">
+                <div class="info-label">Full Name</div>
+                <div class="info-value">{{ user.name }}</div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-label">Email</div>
+                <div class="info-value">{{ user.email }}</div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-label">Member Since</div>
+                <div class="info-value">{{ user.join_date.strftime('%B %d, %Y') }}</div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-label">Member ID</div>
+                <div class="info-value">#FT{{ user.id }}</div>
+            </div>
+            
+            <div class="info-row">
+                <div class="info-label">Current Plan</div>
+                <div class="info-value">Gold Plan (Active)</div>
+            </div>
+        </div>
+        
+        <a href="/logout" class="btn btn-logout">Logout</a>
+    </div>
+</body>
+</html>

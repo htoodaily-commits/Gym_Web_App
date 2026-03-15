@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTime</title>        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+        />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <section class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <span>Fit</span><span style="color: white;">Time</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#program">Programs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#trainers">Trainers</a></li>    
+                <li><a href="#contact">Contact</a></li>  
+                
+                {% if session.user_logged_in %}
+                    <li><a href="/user/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/user/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {% endif %}
+                
+                {% if session.admin_logged_in %}
+                <li><a href="/admin">Admin</a></li>
+                {% endif %}
+            </ul>
+            <div class="menu-container">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        </nav>
+        <div class="hero-text">
+            <h2>Build your body</h2>
+            <p>Transform your body.Transform your life.Get stronger, healthier, and more confident with our expert trainers community support</p>
+            
+            <button onclick="window.location.href='/register'">Join Now</button>
+        </div>
+    </section>
+
+    <section id="program">
+        <div>
+            <h2>Our Programs</h2>
+        </div>
+        <div class="program-boxes">
+             <div class="p-box">
+                <!-- <img src="./images/pexels-leonmart-1552106.jpg" alt=""> -->
+                <img src="{{ url_for('static', filename='images/pexels-leonmart-1552106.jpg') }}">
+                <div class="box-title">Strength</div>
+                <div class="box-text">
+                    <p>Build Real Power. Lift Real Results.Our Strength Class is designed for anyone who wants to build lean muscle, boost metabolism</p>
+                </div>
+                
+            </div>
+
+            <div class="p-box">
+                
+                <img src="{{ url_for('static', filename='images/pexels-koolshooters-9944902.jpg') }}">
+                <div class="box-title">Boxing</div>
+                <div class="box-text">
+                    <p>Release Stress. Build Power. Get Fighter Fit.Channel your inner champion in our non-contact Boxing Fitness class.</p>
+                </div>
+                
+            </div>
+
+            <div class="p-box">
+                <!-- <img src="./images/pg1.jpg" alt=""> -->
+                <img src="{{ url_for('static', filename='images/pg1.jpg') }}">
+                <div class="box-title">Yoga</div>
+                <div class="box-text">
+                    <p>Mindful movement for improved flexibility, balance, and inner peace – suitable for all levels.</p>
+                </div>
+                
+            </div>
+
+            <div class="p-box">
+                <!-- <img src="./images/pg2.jpg" alt=""> -->
+                 <img src="{{ url_for('static', filename='images/pg2.jpg') }}">
+                <div class="box-title">Fat Burn</div>
+                <div class="box-text">
+                    <p>Maximum Results. Minimum Time.Our science-backed Fat Burn class is designed to torch calories during AND after your workout.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>
+            Founded in 2015, FitTime was built on the belief that everyone deseves a welcoming place to improve their health.Our mission is to empower our members throughfitness,  knowledge, and a suppotive community.create a gym where everyone feels welcome, regardless of their fitness level. Armed with just five pieces of equipment and a whole lot of passion, we started with 50 founding members who believed in our mission.
+            Today, that small community has grown into three thriving locations serving over 4,000 members. But our core philosophy remains unchanged: fitness should empower, not intimidate.
+            We've never aimed to be the biggest gym in town—just the most supportive. For nine years, we've been proving that real transformation happens when people feel seen, supported, and celebrated every step of the way
+        </p>
+        <div class="circle-container">
+            <div class="circle">5+
+                <br>
+                Branches
+            </div>
+            <div class="circle">15+
+                <br>
+                Coaches
+            </div>
+            <div class="circle">19+
+                <br>
+                classes
+            </div>
+            <div class="circle">
+                7000+
+                <br>
+                clients
+            </div>
+        </div>        
+    </section>
+      
+    <section id="trainers">    
+        <h2 >Meet Our Trainers</h2>
+        <div class="trainer-container swiper">
+            <div class="slider-wrapper">
+                <div class="card-list swiper-wrapper">
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr1.jpg') }}">
+                        <h2 class="trainer-name">Alex Johnson</h2>
+                        <p class="trainer-profession">Powerlifting, Muscle Building</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr2.jpg') }}">
+                        <h2 class="user-name">Maya Sharma</h2>
+                        <p class="user-profession">Hatha Yoga, Meditation, Flexibility</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr3.jpg') }}">
+                        <h2 class="user-name">James Wilson</h2>
+                        <p class="user-profession">HIIT, Fat Loss, Endurance , cardio</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr4.jpg') }}">
+                        <h2 class="user-name">Lily</h2>
+                        <p class="user-profession">Postpartum Fitness, Women's Health</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr5.jpg') }}">
+                        <h2 class="user-name">Robert Chen</h2>
+                        <p class="user-profession">Senior Health, Joint Mobility, Rehabilitation</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr6.jpg') }}">
+                        <h2 class="user-name">Emma Taylor</h2>
+                        <p class="user-profession">Sports Nutrition, Meal Planning</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                    <div class="card-item swiper-slide">
+                        <img src="{{ url_for('static', filename='images/tr7.jpg') }}">
+                        <h2 class="user-name">Diego Martinez</h2>
+                        <p class="user-profession">Boxing, MMA, Self-defense, boxing coach</p>
+                        <button class="message-button" onclick="window.location.href='/register'">Book now</button>
+                    </div>
+
+                </div>
+                
+                <div class="swiper-slide-button swiper-button-prev"></div>
+                <div class="swiper-slide-button swiper-button-next"></div>
+            </div>
+        </div>
+    </section>   
+
+    <section id="clients">
+        <h2 style="color: white;text-align: center; margin-bottom: 15px;">Our Client's Said</h2>
+        <div class="clients-container">
+            <div class="client-card">
+                <div class="client-title">
+                    <div class="photo">
+                        <!-- <img src="./images/cli1.jpg" alt=""> -->
+                        <img src="{{ url_for('static', filename='images/cli1.jpg') }}">
+                    </div>
+                    <div class="info">
+                        <p class="name">Albert Wilsom</p>                        
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>I joined FitTime Gym back in 2017 .The trainers here didn't just give me a program. They gave me my confidence back.</p>
+            </div>
+
+            <div class="client-card">
+                <div class="client-title">
+                    <div class="photo">
+                        <!-- <img src="./images/cli2.jpg" alt=""> -->
+                        <img src="{{ url_for('static', filename='images/cli2.jpg') }}">
+                    </div>
+                    <div class="info">
+                        <p class="name">Harry Jack</p>                        
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>As a competitive bodybuilder, I need top-notch equipment and knowledgeable trainers.I've gained 15kg of lean muscle since joining. </p>
+            </div>
+
+            <div class="client-card">
+                <div class="client-title">
+                    <div class="photo">
+                        <!-- <img src="./images/cli3.jpg" alt=""> -->
+                        <img src="{{ url_for('static', filename='images/cli3.jpg') }}">
+                    </div>
+                    <div class="info">
+                        <p class="name">Zoey Mia</p>                        
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p >I've lost 25kg in 6 months with the help of amazing trainers at this gym! The personalized workout plans and nutritional guidance completely changed my life.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-text">
+            <h2>Contact Us</h2>
+            <p>Questions, tours, or ready to join?We are here to help. Get in touch today-we usually reply within 2 hours.</p>
+            <div class="info">
+                <div>
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>fittime@gmail.com</span>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>(+959)123456789</span>
+                </div>
+                
+                <div>                    
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>19th , 60th Street , Aungmyaytharzan township , Mandalay</span>
+                </div>
+
+            </div>
+        </div>
+        <div class="contact-form">
+            <form action="/submit-form" method="POST">
+                <input type="text" name="username"  placeholder="Enter your name" required><br>
+                <input type="number" name="phone" placeholder="Enter your phone number" required ><br>
+               
+                <button>submit</button>
+            </form>
+        </div>
+    </section> 
+
+   
+   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+</body>
+</html>
